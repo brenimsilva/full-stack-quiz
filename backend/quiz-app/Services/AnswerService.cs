@@ -26,6 +26,7 @@ public class AnswerService
 
     public Answer Add(AnswerDTO answer)
     {
+        _answerdContext.ChangeTracker.Clear();
         Answer completedAnswer = new Answer()
         {
             Id = 0,

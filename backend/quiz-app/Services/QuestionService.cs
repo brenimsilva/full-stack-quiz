@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Data.Entity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using quiz_app.Context;
 using quiz_app.DTOs;
@@ -46,6 +47,35 @@ public class QuestionService
         _context.Add(questionCompleted);
         _context.SaveChanges();
         return questionCompleted;
+    }
+
+    public bool AddQuestionWithAnswers(AddQuestionDTO question)
+    {
+        Question questionToAdd = new()
+        {
+            created_at = DateTime.Now,
+            QuestionText = question.Question,
+            updated_at = DateTime.Now,
+            Id = 0
+        };
+        _context.Question.Add(questionToAdd);
+
+        _context.SaveChanges();
+        var lastId = questionToAdd.Id;
+        _context.ChangeTracker.Clear();
+        foreach (var answer in question.Answers)
+        {
+            var toAdd = new AnswerDTO()
+            {
+                QuestionId = lastId,
+                AnswerText = answer.AnswerText,
+                RightAnswer = answer.RightAnswer
+            };
+            _answerService.Add(toAdd);
+        }
+        
+        
+        return true;
     }
 
     public Question Edit(QuestionDTO question, int id)

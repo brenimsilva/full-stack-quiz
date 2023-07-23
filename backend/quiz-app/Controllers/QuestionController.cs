@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using quiz_app.Context;
 using quiz_app.DTOs;
 using quiz_app.Models;
@@ -57,4 +58,10 @@ public class QuestionController : ControllerBase
         return _questionService.Delete(id);
     }
 
+    [HttpPost]
+    public IActionResult AddQuestionWithAnswers([FromBody] AddQuestionDTO question)
+    {
+        var ok = _questionService.AddQuestionWithAnswers(question);
+        return Ok(ok);
+    }
 }
