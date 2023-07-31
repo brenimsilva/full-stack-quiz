@@ -2,13 +2,24 @@ import React, { useState } from "react";
 import { IAddQuestionDTO, IAnswerDTO } from "../Interfaces/Interfaces";
 import DashAnswer from "./DashAnswer";
 
-export default function DataAnswerList() {
+const answerDefaultState: IAnswerDTO[] = [];
+for (let i = 0; i < 4; i++) {
+  answerDefaultState.push({ AnswerId: 0, AnswerText: "", RightAnswer: 0 });
+}
+export default function DashAnswerList() {
   const [form, setForm] = useState<IAddQuestionDTO>({} as IAddQuestionDTO);
-  const [answers, setAnswers] = useState<IAnswerDTO[]>([] as IAnswerDTO[]);
+  const [answers, setAnswers] = useState<IAnswerDTO[]>(
+    answerDefaultState as IAnswerDTO[]
+  );
 
-  function getAnswer(answer: string, selected: boolean) {
+  function getAnswers(i: number, obj: IAnswerDTO) {
     setAnswers((prev) => {
-      return;
+      prev.forEach((item) => {
+        item.RightAnswer = 0;
+      });
+      prev[i] = obj;
+      console.log(prev);
+      return prev;
     });
   }
   return (
@@ -16,8 +27,9 @@ export default function DataAnswerList() {
       {answers.map((answer, index) => {
         return (
           <DashAnswer
-            getAnswerData={getAnswer}
+            getAnswerData={(a) => getAnswers(index, a)}
             key={`${answer.AnswerText}-${index}`}
+            answer={answer}
           />
         );
       })}

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { IAnswerDTO } from "../Interfaces/Interfaces";
 
 type DashAnswerProps = {
-  getAnswerData: (text: string, selected: boolean) => void;
+  getAnswerData: ({ AnswerId, AnswerText, RightAnswer }: IAnswerDTO) => void;
+  answer: IAnswerDTO;
 };
-export default function DashAnswer({ getAnswerData }: DashAnswerProps) {
-  const [text, setText] = useState<string>("Resposta 1");
-  const [selected, setSelected] = useState<boolean>(false);
+export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
+  const [answerData, setAnswerData] = useState<IAnswerDTO>(answer);
 
   useEffect(() => {
-    getAnswerData(text, selected);
-  }, [text, selected]);
+    getAnswerData(answerData);
+  }, [answer]);
 
   const colors = [
     "bg-primary",
@@ -24,29 +25,37 @@ export default function DashAnswer({ getAnswerData }: DashAnswerProps) {
     <div
       className={`
       group
+      flex
+      justify-center
       rounded shadow-md ${
-        selected ? "shadow-greenHighlight/[0.4]" : ""
+        answerData.RightAnswer ? "shadow-greenHighlight/[0.4]" : ""
       } p-5 bg-${
-        selected ? "greenHighlight" : "white"
+        answerData.RightAnswer ? "greenHighlight" : "white"
       } text-center cursor-pointer hover:bg-${
-        selected ? "greenHighlight" : "gray-100"
+        answerData.RightAnswer ? "greenHighlight" : "gray-100"
       } transition`}
-      onClick={() => setSelected(!selected)}
+      onClick={() => {
+        setAnswerData({
+          ...answerData,
+          RightAnswer: answerData.RightAnswer === 1 ? 0 : 1,
+        });
+      }}
     >
       <input
         type="text"
-        className={`bg-${
-          selected ? "greenHighlight" : "white"
+        className={`
+        bg-${
+          answerData.RightAnswer ? "greenHighlight" : "white"
         } focus:outline-none text-${
-          selected ? "white" : "primary"
+          answerData.RightAnswer ? "white" : "primary"
         } text-md rounded-lg  w-80 p-2.5 group-hover:bg-${
-          selected ? "greenHighlight" : "gray-100"
+          answerData.RightAnswer ? "greenHighlight" : "gray-100"
         } transition w-fit`}
         placeholder="Insira a resposta..."
         required
-        value={text}
+        value={answerData.AnswerText}
         onChange={(e) => {
-          setText(e.target.value);
+          setAnswerData({ ...answerData, AnswerText: e.target.value });
         }}
       />
     </div>

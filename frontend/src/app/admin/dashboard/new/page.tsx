@@ -5,9 +5,8 @@ import {
   IQuestionDTO,
 } from "@/app/Interfaces/Interfaces";
 import Container from "@/app/components/Container";
-import DashAnswer from "@/app/components/DashAnswer";
+import DashAnswerList from "@/app/components/DashAnswerList";
 import DataAnswerList from "@/app/components/DashAnswerList";
-import Input from "@/app/components/Input";
 import React, { useEffect, useState } from "react";
 
 type Answers = {
@@ -31,12 +30,7 @@ export default function page() {
           </Container>
         </div>
         <div className="w-full flex justify-center mt-10">
-          <DataAnswerList>
-            <DashAnswer getAnswerData={() => {}} />
-            <DashAnswer getAnswerData={() => {}} />
-            <DashAnswer getAnswerData={() => {}} />
-            <DashAnswer getAnswerData={() => {}} />
-          </DataAnswerList>
+          <DashAnswerList />
         </div>
       </div>
     </div>
