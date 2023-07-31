@@ -18,7 +18,7 @@ export default function DashAnswerList() {
         item.RightAnswer = 0;
       });
       prev[i] = obj;
-      console.log(prev);
+      // console.log(prev);
       return prev;
     });
   }

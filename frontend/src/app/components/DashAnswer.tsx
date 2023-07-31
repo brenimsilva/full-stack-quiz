@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { RefObject, createRef, useEffect, useState } from "react";
 import { IAnswerDTO } from "../Interfaces/Interfaces";
 
 type DashAnswerProps = {
@@ -9,8 +9,9 @@ export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
   const [answerData, setAnswerData] = useState<IAnswerDTO>(answer);
 
   useEffect(() => {
+    console.log(answerData);
     getAnswerData(answerData);
-  }, [answer]);
+  }, [answerData]);
 
   const colors = [
     "bg-primary",
@@ -28,17 +29,14 @@ export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
       flex
       justify-center
       rounded shadow-md ${
-        answerData.RightAnswer ? "shadow-greenHighlight/[0.4]" : ""
+        answerData.RightAnswer === 1 ? "shadow-greenHighlight/[0.4]" : ""
       } p-5 bg-${
         answerData.RightAnswer ? "greenHighlight" : "white"
       } text-center cursor-pointer hover:bg-${
         answerData.RightAnswer ? "greenHighlight" : "gray-100"
       } transition`}
       onClick={() => {
-        setAnswerData({
-          ...answerData,
-          RightAnswer: answerData.RightAnswer === 1 ? 0 : 1,
-        });
+        setAnswerData({ ...answerData, RightAnswer: 1 ? 0 : 1 });
       }}
     >
       <input
@@ -53,7 +51,6 @@ export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
         } transition w-fit`}
         placeholder="Insira a resposta..."
         required
-        value={answerData.AnswerText}
         onChange={(e) => {
           setAnswerData({ ...answerData, AnswerText: e.target.value });
         }}
