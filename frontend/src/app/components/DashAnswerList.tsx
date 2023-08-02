@@ -42,7 +42,7 @@ export default function DashAnswerList() {
       })}
       <div className="col-span-2 flex justify-center">
         <button
-          className="rounded-xl  p-2 w-80 bg-primary text-gray-100 shadow-xl shadow-secondary hover:bg-primary/[0.8] transition"
+          className="rounded-xl p-2 w-60 mt-5 bg-primary text-gray-100 shadow-xl shadow-secondary hover:bg-primary/[0.8] transition"
           onClick={() => {}}
         >
           Adicionar

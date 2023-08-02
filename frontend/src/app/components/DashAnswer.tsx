@@ -31,6 +31,8 @@ export default function DashAnswer({
     "shadow-greenHighlight/[0.4]",
     "shadow-primary/[0.5]",
     "bg-gray-100",
+    "hover:bg-gray-100",
+    "hover:bg-primary/[0.1]",
   ];
 
   useEffect(() => {
@@ -59,8 +61,7 @@ export default function DashAnswer({
     >
       <input
         type="text"
-        className={`
-        bg-${colors.bgColor} focus:outline-none focu text-${colors.textColor} text-md rounded-lg w-80 p-2.5 group-hover:bg-${colors.hoverBgColor} transition w-fit`}
+        className={`bg-transparent focus:outline-none focu text-${colors.textColor} text-md rounded-lg w-80 p-2.5 transition w-fit`}
         placeholder="Insira a resposta..."
         required
         value={answer.AnswerText}
