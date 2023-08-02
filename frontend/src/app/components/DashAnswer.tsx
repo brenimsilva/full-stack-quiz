@@ -2,17 +2,15 @@ import React, { RefObject, createRef, useEffect, useState } from "react";
 import { IAnswerDTO } from "../Interfaces/Interfaces";
 
 type DashAnswerProps = {
-  getAnswerData: ({ AnswerId, AnswerText, RightAnswer }: IAnswerDTO) => void;
+  getAnswerText: (text: string) => void;
+  getRightAnswer: () => void;
   answer: IAnswerDTO;
 };
-export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
-  const [answerData, setAnswerData] = useState<IAnswerDTO>(answer);
-
-  useEffect(() => {
-    console.log(answerData);
-    getAnswerData(answerData);
-  }, [answerData]);
-
+export default function DashAnswer({
+  getAnswerText,
+  getRightAnswer,
+  answer,
+}: DashAnswerProps) {
   const colors = [
     "bg-primary",
     "bg-secondary",
@@ -29,30 +27,31 @@ export default function DashAnswer({ getAnswerData, answer }: DashAnswerProps) {
       flex
       justify-center
       rounded shadow-md ${
-        answerData.RightAnswer === 1 ? "shadow-greenHighlight/[0.4]" : ""
+        answer.RightAnswer === 1 ? "shadow-greenHighlight/[0.4]" : ""
       } p-5 bg-${
-        answerData.RightAnswer ? "greenHighlight" : "white"
+        answer.RightAnswer ? "greenHighlight" : "white"
       } text-center cursor-pointer hover:bg-${
-        answerData.RightAnswer ? "greenHighlight" : "gray-100"
+        answer.RightAnswer ? "greenHighlight" : "gray-100"
       } transition`}
       onClick={() => {
-        setAnswerData({ ...answerData, RightAnswer: 1 ? 0 : 1 });
+        getRightAnswer();
       }}
     >
       <input
         type="text"
         className={`
         bg-${
-          answerData.RightAnswer ? "greenHighlight" : "white"
+          answer.RightAnswer ? "greenHighlight" : "white"
         } focus:outline-none text-${
-          answerData.RightAnswer ? "white" : "primary"
+          answer.RightAnswer ? "white" : "primary"
         } text-md rounded-lg  w-80 p-2.5 group-hover:bg-${
-          answerData.RightAnswer ? "greenHighlight" : "gray-100"
+          answer.RightAnswer ? "greenHighlight" : "gray-100"
         } transition w-fit`}
         placeholder="Insira a resposta..."
         required
+        value={answer.AnswerText}
         onChange={(e) => {
-          setAnswerData({ ...answerData, AnswerText: e.target.value });
+          getAnswerText(e.target.value);
         }}
       />
     </div>
