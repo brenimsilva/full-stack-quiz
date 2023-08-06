@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { IAddQuestionDTO, IAnswerDTO } from "../Interfaces/Interfaces";
+import { IQuestionDTO, IAnswerDTO } from "../Interfaces/Interfaces";
 import DashAnswer from "./DashAnswer";
 
 const answerDefaultState: IAnswerDTO[] = [];
@@ -11,7 +11,7 @@ type Props = {
   getAnswers: (answers: Array<IAnswerDTO>) => void;
 };
 export default function DashAnswerList({ getAnswers }: Props) {
-  const [form, setForm] = useState<IAddQuestionDTO>({} as IAddQuestionDTO);
+  const [form, setForm] = useState<IQuestionDTO>({} as IQuestionDTO);
   const [answers, setAnswers] = useState<IAnswerDTO[]>(answerDefaultState);
 
   function getAnswerText(i: number, text: string) {

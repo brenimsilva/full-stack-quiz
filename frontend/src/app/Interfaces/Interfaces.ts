@@ -4,10 +4,6 @@ interface IQuestionDTO {
   question: string;
   answers: Array<IAnswerDTO>;
 }
-interface IAddQuestionDTO {
-  question: string;
-  Answers: Array<IAnswerDTO>;
-}
 
 interface IQuestion {
   Id: number;
@@ -31,4 +27,4 @@ interface IAnswerDTO {
   RightAnswer: number;
 }
 
-export type {IAnswer, IQuestion, IAnswerDTO, IQuestionDTO, IAddQuestionDTO}
+export type {IAnswer, IQuestion, IAnswerDTO, IQuestionDTO}

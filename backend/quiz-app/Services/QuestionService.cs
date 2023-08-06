@@ -49,7 +49,7 @@ public class QuestionService
         return questionCompleted;
     }
 
-    public bool AddQuestionWithAnswers(AddQuestionDTO question)
+    public QuestionAnswerDTO AddQuestionWithAnswers(AddQuestionDTO question)
     {
         Question questionToAdd = new()
         {
@@ -59,8 +59,8 @@ public class QuestionService
             Id = 0
         };
         _context.Question.Add(questionToAdd);
-
         _context.SaveChanges();
+        int q_id = questionToAdd.Id;
         var lastId = questionToAdd.Id;
         _context.ChangeTracker.Clear();
         foreach (var answer in question.Answers)
@@ -73,9 +73,11 @@ public class QuestionService
             };
             _answerService.Add(toAdd);
         }
+
+        QuestionAnswerDTO res = GetQuestionAnswersByQuestionId(q_id);
         
         
-        return true;
+        return res;
     }
 
     public Question Edit(QuestionDTO question, int id)

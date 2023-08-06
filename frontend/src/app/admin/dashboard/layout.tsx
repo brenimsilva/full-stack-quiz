@@ -1,5 +1,6 @@
 import Menu from "@/app/components/Menu";
 import "../../globals.css";
+import QuestionProvider from "@/app/store/question-store";
 
 const buttons = [
   { iconClass: "fa-solid fa-house", route: "/", name: "HOME" },
@@ -12,9 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen bg-background flex">
-      <Menu base="/admin/dashboard" buttons={buttons} />
-      {children}
-    </div>
+    <QuestionProvider>
+      <div className="h-screen bg-background flex">
+        <Menu base="/admin/dashboard" buttons={buttons} />
+        {children}
+      </div>
+    </QuestionProvider>
   );
 }

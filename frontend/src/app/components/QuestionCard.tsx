@@ -8,7 +8,7 @@ type Props = {
 };
 export default function QuestionCard({ id }: Props) {
   const [question, setQuestion] = useState<IQuestionDTO>();
-
+  const reservedColors = ["text-red-500"];
   useEffect(() => {
     API.getQuestionAnswerByQuestionId(id).then((data) => setQuestion(data));
   }, []);
@@ -24,7 +24,11 @@ export default function QuestionCard({ id }: Props) {
             <ol className="list-decimal list-inside">
               {question.answers.map((answer) => {
                 return (
-                  <li className="text-textColor list-item">
+                  <li
+                    className={`list-item ${
+                      answer.RightAnswer === 1 ? "text-red-500" : ""
+                    }`}
+                  >
                     {answer.answerText}
                   </li>
                 );

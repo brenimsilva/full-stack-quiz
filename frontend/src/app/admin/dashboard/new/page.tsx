@@ -1,26 +1,26 @@
 "use client";
-import { IAddQuestionDTO, IAnswerDTO } from "@/app/Interfaces/Interfaces";
+import { IQuestionDTO, IAnswerDTO } from "@/app/Interfaces/Interfaces";
 import Container from "@/app/components/Container";
 import DashAnswerList from "@/app/components/DashAnswerList";
 import DataAnswerList from "@/app/components/DashAnswerList";
 import QuestionCard from "@/app/components/QuestionCard";
+import { questionContext } from "@/app/store/question-store";
 import API from "@/app/util/API";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 export default function page() {
-  const [question, setQuestion] = useState<IAddQuestionDTO>(
-    {} as IAddQuestionDTO
-  );
+  const [question, setQuestion] = useState<string>("");
   function questionInput(value: string) {
-    setQuestion((prev) => {
-      return { ...prev, question: value };
-    });
+    setQuestion(value);
   }
-
+  const { add, questions } = useContext(questionContext);
+  console.log(questions);
   function getAnswersInput(answers: Array<IAnswerDTO>) {
-    API.addQuestionWithAnswers({ ...question, Answers: answers }).then((data) =>
-      console.log(data)
-    );
+    add({
+      questionId: 0,
+      question: question,
+      answers: answers,
+    });
   }
 
   return (
@@ -42,14 +42,9 @@ export default function page() {
         <DashAnswerList getAnswers={getAnswersInput} />
       </div>
       <div className="gap-10 w-full grid grid-cols-4 mt-10">
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
-        <QuestionCard id={5} />
+        {questions.map((q) => {
+          return <QuestionCard id={q.questionId} />;
+        })}
       </div>
     </div>
   );
