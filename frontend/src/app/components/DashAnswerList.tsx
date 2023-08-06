@@ -1,18 +1,22 @@
+"use client";
 import React, { useState } from "react";
 import { IAddQuestionDTO, IAnswerDTO } from "../Interfaces/Interfaces";
 import DashAnswer from "./DashAnswer";
 
 const answerDefaultState: IAnswerDTO[] = [];
 for (let i = 0; i < 4; i++) {
-  answerDefaultState.push({ AnswerId: i, AnswerText: "", RightAnswer: 0 });
+  answerDefaultState.push({ AnswerId: i, answerText: "", RightAnswer: 0 });
 }
-export default function DashAnswerList() {
+type Props = {
+  getAnswers: (answers: Array<IAnswerDTO>) => void;
+};
+export default function DashAnswerList({ getAnswers }: Props) {
   const [form, setForm] = useState<IAddQuestionDTO>({} as IAddQuestionDTO);
   const [answers, setAnswers] = useState<IAnswerDTO[]>(answerDefaultState);
 
   function getAnswerText(i: number, text: string) {
     setAnswers((prev) => {
-      prev[i].AnswerText = text;
+      prev[i].answerText = text;
       return [...prev];
     });
   }
@@ -23,7 +27,6 @@ export default function DashAnswerList() {
         item.RightAnswer = 0;
       });
       prev[i].RightAnswer = 1;
-      console.log(prev);
       return [...prev];
     });
   }
@@ -43,7 +46,9 @@ export default function DashAnswerList() {
       <div className="col-span-2 flex justify-center">
         <button
           className="rounded-xl p-2 w-60 mt-5 bg-primary text-gray-100 shadow-xl shadow-secondary hover:bg-primary/[0.8] transition"
-          onClick={() => {}}
+          onClick={() => {
+            getAnswers(answers);
+          }}
         >
           Adicionar
         </button>

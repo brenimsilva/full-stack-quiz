@@ -27,7 +27,7 @@ interface IAnswer {
 
 interface IAnswerDTO {
   AnswerId: number;
-  AnswerText: string;
+  answerText: string;
   RightAnswer: number;
 }
 

@@ -13,7 +13,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'text': '#000a09',
+        'textColor': '#575758',
         'background': '#f3f8fb',
         'primary': '#7ac1fa',
         'secondary': '#cae5fc',
@@ -21,6 +21,9 @@ module.exports = {
         'greenHighlight' : "#7afa98",
         'blueHighlight': "#7a87fa"
       },
+      animation: {
+        lift: "translate-y-1 forwards 0.3s ease"
+      }
     },
   },
   plugins: [],

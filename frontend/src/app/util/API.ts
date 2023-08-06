@@ -11,9 +11,10 @@ export default class API {
         return data;
     }
 
-    public static async addQuestionWithAnswers({question}: IAddQuestionDTO): Promise<boolean> {
+    public static async addQuestionWithAnswers(question: IAddQuestionDTO): Promise<boolean> {
         const url = `${this.baseUrl}${this.resource}/AddQuestionWithAnswers`;
-        const res = await fetch(url, {method: "POST", body: JSON.stringify(question),
+        const json = JSON.stringify(question);
+        const res = await fetch(url, {method: "POST", body: json,
         headers: {"Content-Type": "application/json"}});
         const data = await res.json();
         return data;
