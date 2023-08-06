@@ -17,21 +17,19 @@ type Answers = {
 };
 export default function page() {
   return (
-    <div className="">
-      <div className="">
-        <div className="w-full flex justify-center">
-          <Container>
-            <input
-              type="text"
-              className="bg-white  border-gray-200 focus:outline-white text-gray-900 text-2xl rounded-lg  w-80 p-2.5"
-              placeholder="Insira a pergunta..."
-              required
-            ></input>
-          </Container>
-        </div>
-        <div className="w-full flex justify-center mt-10">
-          <DashAnswerList />
-        </div>
+    <div className="w-full">
+      <div className="w-full flex justify-center">
+        <Container>
+          <input
+            type="text"
+            className="bg-white  border-gray-200 focus:outline-white text-gray-900 text-2xl rounded-lg  w-80 p-2.5"
+            placeholder="Insira a pergunta..."
+            required
+          ></input>
+        </Container>
+      </div>
+      <div className="w-full flex justify-center mt-10">
+        <DashAnswerList />
       </div>
     </div>
   );

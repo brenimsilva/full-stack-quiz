@@ -3,19 +3,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IQuestionDTO } from "./Interfaces/Interfaces";
 import AnswerList from "./components/AnswerList";
+import API from "./util/API";
 
 export default function Home() {
   const [question, setQuestion] = useState<IQuestionDTO>({} as IQuestionDTO);
 
   useEffect(() => {
-    const url =
-      "https://localhost:44368/Question/GetQuestionAnswersByQuestionId/5";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data: IQuestionDTO) => {
-        console.log(data);
-        setQuestion(data);
-      });
+    API.getQuestionAnswerByQuestionId(5).then((data) => setQuestion(data));
   }, []);
   return (
     <main className="flex min-h-screen bg-gray-900 items-center justify-center ">
