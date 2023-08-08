@@ -5,7 +5,7 @@ export default class API {
     static resource: string = "Question";
     static url: string = `${this.baseUrl}${this.resource}`;
     constructor(){}
-    public static async getQuestionAnswerByQuestionId(id: number): Promise<IQuestionDTO> {
+        public static async getQuestionAnswerByQuestionId(id: number): Promise<IQuestionDTO> {
         const url = `${this.baseUrl}${this.resource}/GetQuestionAnswersByQuestionId/${id}`
         const res = await fetch(url);
         const data = await res.json();
