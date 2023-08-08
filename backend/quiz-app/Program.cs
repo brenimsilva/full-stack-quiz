@@ -4,6 +4,7 @@ using quiz_app.Models;
 using quiz_app.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddGraphQLServer().AddQueryType<QuestionQuery>().AddProjections().AddFiltering().AddSorting();
 
 // Add services to the container.
 
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<AnswerContext>(opts => opts.UseMySql(conString, ve
 builder.Services.AddDbContext<QuestionContext>(opts => opts.UseMySql(conString, version));
 
 var app = builder.Build();
+app.MapGraphQL("/graphql");
 
 app.UseCors(e => e.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

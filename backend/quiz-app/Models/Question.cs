@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 
 namespace quiz_app.Models;
 

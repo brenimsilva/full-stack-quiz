@@ -183,6 +183,48 @@
           }
         }
       },
+      "HotChocolate.Data/13.4.0": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Execution": "13.4.0",
+          "HotChocolate.Types.CursorPagination": "13.4.0"
+        },
+        "compile": {
+          "lib/net6.0/HotChocolate.Data.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/HotChocolate.Data.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "HotChocolate.Data.EntityFramework/13.4.0": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate": "13.4.0",
+          "HotChocolate.Data": "13.4.0",
+          "Microsoft.EntityFrameworkCore": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/HotChocolate.Data.EntityFramework.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/HotChocolate.Data.EntityFramework.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/HotChocolate.Data.EntityFramework.props": {},
+          "build/HotChocolate.Data.EntityFramework.targets": {}
+        }
+      },
       "HotChocolate.Execution/13.4.0": {
         "type": "package",
         "dependencies": {
@@ -2135,6 +2177,52 @@
         "lib/net8.0/HotChocolate.Authorization.xml",
         "lib/netstandard2.0/HotChocolate.Authorization.dll",
         "lib/netstandard2.0/HotChocolate.Authorization.xml",
+        "strawberryshake-signet.png"
+      ]
+    },
+    "HotChocolate.Data/13.4.0": {
+      "sha512": "8im3s6n/ErMHJ/VjsExASMFSYdQ1IKgAk1Rzsx1/hF2W3s15npkHzgMmi+sFNf3/LPvEbGYP1+7trv5iAPYSzg==",
+      "type": "package",
+      "path": "hotchocolate.data/13.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/HotChocolate.Data.props",
+        "build/HotChocolate.Data.targets",
+        "greendonut-signet.png",
+        "hotchocolate-signet.png",
+        "hotchocolate.data.13.4.0.nupkg.sha512",
+        "hotchocolate.data.nuspec",
+        "lib/net6.0/HotChocolate.Data.dll",
+        "lib/net6.0/HotChocolate.Data.xml",
+        "lib/net7.0/HotChocolate.Data.dll",
+        "lib/net7.0/HotChocolate.Data.xml",
+        "lib/net8.0/HotChocolate.Data.dll",
+        "lib/net8.0/HotChocolate.Data.xml",
+        "strawberryshake-signet.png"
+      ]
+    },
+    "HotChocolate.Data.EntityFramework/13.4.0": {
+      "sha512": "LCm083kV0gmI6D1Ed3aFMPFdZwBL9hGzC2zU5LESpxBG4IFjYZVGJ6YEb+SJJx2Ga+kbSAAjGuck7Ce7nIKMBg==",
+      "type": "package",
+      "path": "hotchocolate.data.entityframework/13.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/HotChocolate.Data.EntityFramework.props",
+        "build/HotChocolate.Data.EntityFramework.targets",
+        "greendonut-signet.png",
+        "hotchocolate-signet.png",
+        "hotchocolate.data.entityframework.13.4.0.nupkg.sha512",
+        "hotchocolate.data.entityframework.nuspec",
+        "lib/net6.0/HotChocolate.Data.EntityFramework.dll",
+        "lib/net6.0/HotChocolate.Data.EntityFramework.xml",
+        "lib/net7.0/HotChocolate.Data.EntityFramework.dll",
+        "lib/net7.0/HotChocolate.Data.EntityFramework.xml",
+        "lib/net8.0/HotChocolate.Data.EntityFramework.dll",
+        "lib/net8.0/HotChocolate.Data.EntityFramework.xml",
         "strawberryshake-signet.png"
       ]
     },
@@ -5428,6 +5516,7 @@
     "net6.0": [
       "EntityFramework >= 6.4.4",
       "HotChocolate.AspNetCore >= 13.4.0",
+      "HotChocolate.Data.EntityFramework >= 13.4.0",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.9",
@@ -5484,6 +5573,10 @@
             "target": "Package",
             "version": "[13.4.0, )"
           },
+          "HotChocolate.Data.EntityFramework": {
+            "target": "Package",
+            "version": "[13.4.0, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.9, )"
@@ -5535,5 +5628,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "No Authorization header detected"
+    }
+  ]
 }

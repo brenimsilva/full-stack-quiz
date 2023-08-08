@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BWoXOctOLDU8PduDYNmCbatvC9F/RMYFnmkeW5QCK9x/VpTeI9I0ubbS33OqKPGbB45b8dKgygUbrzIx/dUEtA==",
+  "dgSpecHash": "/l9Kc+5CBgQmfVnoMELThnJKgj4x5m1Zhpadekcxy0cXWAwQHn6edy9y8asAPRhKmcR4nks3t7UN/VNOuBPGjQ==",
   "success": true,
   "projectFilePath": "C:\\projects\\quiz\\backend\\quiz-app\\quiz-app.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,8 @@
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.abstractions\\13.4.0\\hotchocolate.abstractions.13.4.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.aspnetcore\\13.4.0\\hotchocolate.aspnetcore.13.4.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.authorization\\13.4.0\\hotchocolate.authorization.13.4.0.nupkg.sha512",
+    "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.data\\13.4.0\\hotchocolate.data.13.4.0.nupkg.sha512",
+    "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.data.entityframework\\13.4.0\\hotchocolate.data.entityframework.13.4.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.execution\\13.4.0\\hotchocolate.execution.13.4.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.execution.abstractions\\13.4.0\\hotchocolate.execution.abstractions.13.4.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\hotchocolate.fetching\\13.4.0\\hotchocolate.fetching.13.4.0.nupkg.sha512",
@@ -120,5 +122,12 @@
     "C:\\Users\\breno\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\yarp.reverseproxy\\2.0.0\\yarp.reverseproxy.2.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "No Authorization header detected"
+    }
+  ]
 }
