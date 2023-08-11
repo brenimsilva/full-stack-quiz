@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/l9Kc+5CBgQmfVnoMELThnJKgj4x5m1Zhpadekcxy0cXWAwQHn6edy9y8asAPRhKmcR4nks3t7UN/VNOuBPGjQ==",
+  "dgSpecHash": "cA7CEvQzt4x5kI/+OdNjcRnIoL0RAlfySBRLsIaO2lOI3RSbwCM8bq7GieKuuFFkvsQCF3+4z/DqHjFGdlQaTw==",
   "success": true,
-  "projectFilePath": "C:\\projects\\quiz\\backend\\quiz-app\\quiz-app.csproj",
+  "projectFilePath": "c:\\projects\\quiz\\backend\\quiz-app\\quiz-app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\breno\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
@@ -122,12 +122,5 @@
     "C:\\Users\\breno\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\yarp.reverseproxy\\2.0.0\\yarp.reverseproxy.2.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "No Authorization header detected"
-    }
-  ]
+  "logs": []
 }

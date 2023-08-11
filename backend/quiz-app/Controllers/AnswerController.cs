@@ -28,19 +28,19 @@ public class AnswerController : ControllerBase
     {
         return _answerService.GetById(id);
     }
-    [HttpPost]
-    public ActionResult<Answer> Add([FromBody] AnswerDTO answer)
-    {
-        Answer completedAnswer = _answerService.Add(answer);
-        return Ok(answer);
-    }
-
-    [HttpPut("{id}")]
-    public ActionResult<Answer> Edit([FromBody] AnswerDTO answer, int id)
-    {
-        Answer editedAnswer = _answerService.Edit(answer, id);
-        return Ok(editedAnswer);
-    }
+    // [HttpPost]
+    // public ActionResult<Answer> Add([FromBody] AnswerDTO answer)
+    // {
+    //     Answer completedAnswer = _answerService.Add(answer);
+    //     return Ok(answer);
+    // }
+    //
+    // [HttpPut("{id}")]
+    // public ActionResult<Answer> Edit([FromBody] AnswerDTO answer, int id)
+    // {
+    //     Answer editedAnswer = _answerService.Edit(answer, id);
+    //     return Ok(editedAnswer);
+    // }
 
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)

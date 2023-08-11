@@ -12,4 +12,10 @@ public class QuestionContext : DbContext
     
     public DbSet<Question> Question { get; set; }
 
+    // protected override void OnModelCreating(ModelBuilder modelBuilder)
+    // {
+    //     modelBuilder.Entity<Question>().HasMany(e => e.Answers)
+    //         .WithOne(e => e.Question)
+    //         .HasForeignKey(e => e.QuestionId);
+    // }
 }

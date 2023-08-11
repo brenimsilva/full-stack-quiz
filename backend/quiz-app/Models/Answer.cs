@@ -8,8 +8,8 @@ public class Answer
    [Key, Required]public int Id { get; set; }
    [Required, StringLength(240)]public string AnswerText { get; set; }
    [Required] public byte RightAnswer { get; set; }
-   [Required, ForeignKey("Question")]public int QuestionId { get; set; }
-   // public virtual Question question { get; set; }
-   public DateTime? created_at { get; set; }
-   public DateTime? updated_at { get; set; }
+   [Column("QuestionId"), ForeignKey("Question")] public int QuestionId { get; set; }
+   // public virtual Question Question { get; set; }
+   [Required, Column("created_at", TypeName = "DateTime")]public DateTime? created_at { get; set; }
+   [Required, Column("updated_at", TypeName = "DateTime")]public DateTime? updated_at { get; set; }
 }

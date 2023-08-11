@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using quiz_app.Context;
 using quiz_app.DTOs;
 using quiz_app.Models;
@@ -23,7 +21,7 @@ public class QuestionService
     
     public IEnumerable<Question> GetAll(int skip, int take)
     {
-        return _context.Question.Skip(skip).Take(take);
+        return _context.Question.Include(e => e.Answers).Skip(skip).Take(take);
     }
 
     public Question GetById(int id)
@@ -49,36 +47,36 @@ public class QuestionService
         return questionCompleted;
     }
 
-    public QuestionAnswerDTO AddQuestionWithAnswers(AddQuestionDTO question)
-    {
-        Question questionToAdd = new()
-        {
-            created_at = DateTime.Now,
-            QuestionText = question.Question,
-            updated_at = DateTime.Now,
-            Id = 0
-        };
-        _context.Question.Add(questionToAdd);
-        _context.SaveChanges();
-        int q_id = questionToAdd.Id;
-        var lastId = questionToAdd.Id;
-        _context.ChangeTracker.Clear();
-        foreach (var answer in question.Answers)
-        {
-            var toAdd = new AnswerDTO()
-            {
-                QuestionId = lastId,
-                AnswerText = answer.AnswerText,
-                RightAnswer = answer.RightAnswer
-            };
-            _answerService.Add(toAdd);
-        }
-
-        QuestionAnswerDTO res = GetQuestionAnswersByQuestionId(q_id);
-        
-        
-        return res;
-    }
+    // public QuestionAnswerDTO AddQuestionWithAnswers(AddQuestionDTO question)
+    // {
+    //     Question questionToAdd = new()
+    //     {
+    //         created_at = DateTime.Now,
+    //         QuestionText = question.Question,
+    //         updated_at = DateTime.Now,
+    //         Id = 0
+    //     };
+    //     _context.Question.Add(questionToAdd);
+    //     _context.SaveChanges();
+    //     int q_id = questionToAdd.Id;
+    //     var lastId = questionToAdd.Id;
+    //     _context.ChangeTracker.Clear();
+    //     foreach (var answer in question.Answers)
+    //     {
+    //         var toAdd = new AnswerDTO()
+    //         {
+    //             QuestionId = lastId,
+    //             AnswerText = answer.AnswerText,
+    //             RightAnswer = answer.RightAnswer
+    //         };
+    //         _answerService.Add(toAdd);
+    //     }
+    //
+    //     QuestionAnswerDTO res = GetQuestionAnswersByQuestionId(q_id);
+    //     
+    //     
+    //     return res;
+    // }
 
     public Question Edit(QuestionDTO question, int id)
     {
@@ -96,32 +94,32 @@ public class QuestionService
         return questionEdited;
     }
 
-    public QuestionAnswerDTO GetQuestionAnswersByQuestionId(int questionId)
-    {
-        Question question = this.GetById(questionId);
-        _context.ChangeTracker.Clear();
-        IEnumerable<Answer> answerList = _answerContext.Answer.Where(e => e.QuestionId == questionId);
-        _context.ChangeTracker.Clear();
-        List<AnswerByQuestionDTO> answerDtoList = new();
-        foreach (Answer answer in answerList)
-        {
-            AnswerByQuestionDTO answerDto = new()
-            {
-                AnswerId = answer.Id,
-                AnswerText = answer.AnswerText,
-                RightAnswer = answer.RightAnswer
-            };
-            answerDtoList.Add(answerDto);
-        };
-
-        QuestionAnswerDTO response = new QuestionAnswerDTO()
-        {
-            QuestionId = question.Id,
-            Question = question.QuestionText,
-            Answers = answerDtoList
-        };
-        return response;
-    }
+    // public QuestionAnswerDTO GetQuestionAnswersByQuestionId(int questionId)
+    // {
+    //     Question question = this.GetById(questionId);
+    //     _context.ChangeTracker.Clear();
+    //     IEnumerable<Answer> answerList = _answerContext.Answer.Where(e => e.QuestionId == questionId);
+    //     _context.ChangeTracker.Clear();
+    //     List<AnswerByQuestionDTO> answerDtoList = new();
+    //     foreach (Answer answer in answerList)
+    //     {
+    //         AnswerByQuestionDTO answerDto = new()
+    //         {
+    //             AnswerId = answer.Id,
+    //             AnswerText = answer.AnswerText,
+    //             RightAnswer = answer.RightAnswer
+    //         };
+    //         answerDtoList.Add(answerDto);
+    //     };
+    //
+    //     QuestionAnswerDTO response = new QuestionAnswerDTO()
+    //     {
+    //         QuestionId = question.Id,
+    //         Question = question.QuestionText,
+    //         Answers = answerDtoList
+    //     };
+    //     return response;
+    // }
     
     public string Delete(int id)
     {

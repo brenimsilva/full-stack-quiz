@@ -23,7 +23,7 @@ public class QuestionController : ControllerBase
     [HttpGet]
     public IEnumerable<Question> GetAll([FromQuery] int skip = 0, [FromQuery] int take = 50)
     {
-        return _questionService.GetAll(skip, take);
+        return _questionService.GetAll(skip, take).OrderBy(e => e.Id);
     }
 
     [HttpGet("{id}")]
@@ -45,23 +45,23 @@ public class QuestionController : ControllerBase
         return Ok(questionCompleted);
     }
 
-    [HttpGet("{questionId}")]
-    public ActionResult<QuestionAnswerDTO> GetQuestionAnswersByQuestionId(int questionId)
-    {
-        QuestionAnswerDTO questionAnswer = _questionService.GetQuestionAnswersByQuestionId(questionId);
-        return Ok(questionAnswer);
-    }
+    // [HttpGet("{questionId}")]
+    // public ActionResult<QuestionAnswerDTO> GetQuestionAnswersByQuestionId(int questionId)
+    // {
+    //     QuestionAnswerDTO questionAnswer = _questionService.GetQuestionAnswersByQuestionId(questionId);
+    //     return Ok(questionAnswer);
+    // }
+    //
+    // [HttpDelete("{id}")]
+    // public ActionResult<string> Delete(int id)
+    // {
+    //     return _questionService.Delete(id);
+    // }
 
-    [HttpDelete("{id}")]
-    public ActionResult<string> Delete(int id)
-    {
-        return _questionService.Delete(id);
-    }
-
-    [HttpPost]
-    public IActionResult AddQuestionWithAnswers([FromBody] AddQuestionDTO question)
-    {
-        var ok = _questionService.AddQuestionWithAnswers(question);
-        return Ok(ok);
-    }
+    // [HttpPost]
+    // public IActionResult AddQuestionWithAnswers([FromBody] AddQuestionDTO question)
+    // {
+    //     var ok = _questionService.AddQuestionWithAnswers(question);
+    //     return Ok(ok);
+    // }
 }
