@@ -19,6 +19,36 @@ namespace quiz_app.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("quiz_app.Models.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasMaxLength(240)
+                        .HasColumnType("varchar(240)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("RightAnswer")
+                        .HasColumnType("tinyint unsigned");
+
+                    b.Property<DateTime?>("created_at")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("updated_at")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answer");
+                });
+
             modelBuilder.Entity("quiz_app.Models.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -39,6 +69,22 @@ namespace quiz_app.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Question");
+                });
+
+            modelBuilder.Entity("quiz_app.Models.Answer", b =>
+                {
+                    b.HasOne("quiz_app.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("quiz_app.Models.Question", b =>
+                {
+                    b.Navigation("Answers");
                 });
 #pragma warning restore 612, 618
         }

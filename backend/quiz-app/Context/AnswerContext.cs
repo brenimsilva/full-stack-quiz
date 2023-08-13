@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using quiz_app.DTOs;
 using quiz_app.Models;
 
 namespace quiz_app.Context;

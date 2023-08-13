@@ -34,7 +34,7 @@ public class AnswerController : ControllerBase
         Answer completedAnswer = _answerService.Add(answer);
         return Ok(answer);
     }
-
+    
     [HttpPut("{id}")]
     public ActionResult<Answer> Edit([FromBody] AnswerDTO answer, int id)
     {

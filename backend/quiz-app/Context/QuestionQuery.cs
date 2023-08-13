@@ -1,15 +1,15 @@
-﻿using quiz_app.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using quiz_app.DTOs;
+using quiz_app.Models;
+using quiz_app.Services;
 
 namespace quiz_app.Context
 {
     public class QuestionQuery
     {
-        [UseSorting]
-        [UseFiltering]
-        [UseProjection]
-        public IQueryable<Question> GetQuestions()
+        public IQueryable<Question> GetQuestions([Service()] QuestionContext _context)
         {
-           return new List<Question>().AsQueryable();
+            return _context.Question.Include(e => e.Answers);
         }
     }
 }

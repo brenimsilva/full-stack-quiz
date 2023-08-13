@@ -4,7 +4,8 @@ using quiz_app.Models;
 using quiz_app.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddGraphQLServer().AddQueryType<QuestionQuery>().AddProjections().AddFiltering().AddSorting();
+builder.Services.AddGraphQLServer().AddQueryType<QuestionQuery>();
+    // .AddFiltering().AddProjections().AddFiltering().AddSorting();
 
 // Add services to the container.
 
@@ -15,6 +16,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<QuestionService, QuestionService>();
 builder.Services.AddScoped<AnswerService, AnswerService>();
+builder.Services.AddScoped<Question, Question>();
+builder.Services.AddScoped<Answer, Answer>();
 
 //DB Connection
 string conString = builder.Configuration.GetConnectionString("QuizConnection");

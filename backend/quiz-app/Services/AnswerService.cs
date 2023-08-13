@@ -1,4 +1,5 @@
-﻿using quiz_app.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using quiz_app.Context;
 using quiz_app.DTOs;
 using quiz_app.Models;
 
@@ -15,7 +16,7 @@ public class AnswerService
 
     public IEnumerable<Answer> GetAll(int skip, int take)
     {
-        return _answerdContext.Answer.Skip(skip).Take(take);
+        return _answerdContext.Answer;
     }
 
     public Answer GetById(int id)

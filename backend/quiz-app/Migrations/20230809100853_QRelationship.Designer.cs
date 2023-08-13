@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using quiz_app.Context;
 
@@ -9,10 +10,12 @@ using quiz_app.Context;
 
 namespace quiz_app.Migrations
 {
-    [DbContext(typeof(AnswerContext))]
-    partial class AnswerContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(QuestionContext))]
+    [Migration("20230809100853_QRelationship")]
+    partial class QRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
