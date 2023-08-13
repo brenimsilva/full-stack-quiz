@@ -25,40 +25,40 @@ public class AnswerService
         return answer;
     }
 
-    // public Answer Add(AnswerDTO answer)
-    // {
-    //     _answerdContext.ChangeTracker.Clear();
-    //     Answer completedAnswer = new Answer()
-    //     {
-    //         Id = 0,
-    //         updated_at = DateTime.Now,
-    //         created_at = DateTime.Now,
-    //         AnswerText = answer.AnswerText,
-    //         QuestionId = answer.QuestionId,
-    //         RightAnswer = answer.RightAnswer
-    //     };
-    //     _answerdContext.Answer.Add(completedAnswer);
-    //     _answerdContext.SaveChanges();
-    //     return completedAnswer;
-    // }
+    public Answer Add(AnswerDTO answer)
+    {
+        _answerdContext.ChangeTracker.Clear();
+        Answer completedAnswer = new Answer()
+        {
+            Id = 0,
+            updated_at = DateTime.Now,
+            created_at = DateTime.Now,
+            AnswerText = answer.AnswerText,
+            QuestionId = answer.QuestionId,
+            RightAnswer = answer.RightAnswer
+        };
+        _answerdContext.Answer.Add(completedAnswer);
+        _answerdContext.SaveChanges();
+        return completedAnswer;
+    }
 
-    // public Answer Edit(AnswerDTO answer, int id)
-    // {
-    //     Answer answerToEdit = this.GetById(id);
-    //     _answerdContext.ChangeTracker.Clear();
-    //     Answer newAnswer = new Answer()
-    //     {
-    //         Id = id,
-    //         created_at = answerToEdit.created_at,
-    //         updated_at = DateTime.Now,
-    //         AnswerText = answer.AnswerText,
-    //         RightAnswer = answer.RightAnswer,
-    //         QuestionId = answer.QuestionId
-    //     };
-    //     _answerdContext.Answer.Update(newAnswer);
-    //     _answerdContext.SaveChanges();
-    //     return newAnswer;
-    // }
+    public Answer Edit(AnswerDTO answer, int id)
+    {
+        Answer answerToEdit = this.GetById(id);
+        _answerdContext.ChangeTracker.Clear();
+        Answer newAnswer = new Answer()
+        {
+            Id = id,
+            created_at = answerToEdit.created_at,
+            updated_at = DateTime.Now,
+            AnswerText = answer.AnswerText,
+            RightAnswer = answer.RightAnswer,
+            QuestionId = answer.QuestionId
+        };
+        _answerdContext.Answer.Update(newAnswer);
+        _answerdContext.SaveChanges();
+        return newAnswer;
+    }
 
     public string Delete(int id)
     {

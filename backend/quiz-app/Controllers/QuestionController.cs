@@ -39,29 +39,23 @@ public class QuestionController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Question> Add([FromBody] QuestionDTO question)
+    public ActionResult<Question> Add([FromBody] AddQuestionDTO question)
     {
         Question questionCompleted = _questionService.Add(question);
         return Ok(questionCompleted);
     }
 
-    // [HttpGet("{questionId}")]
-    // public ActionResult<QuestionAnswerDTO> GetQuestionAnswersByQuestionId(int questionId)
-    // {
-    //     QuestionAnswerDTO questionAnswer = _questionService.GetQuestionAnswersByQuestionId(questionId);
-    //     return Ok(questionAnswer);
-    // }
-    //
-    // [HttpDelete("{id}")]
-    // public ActionResult<string> Delete(int id)
-    // {
-    //     return _questionService.Delete(id);
-    // }
+    [HttpGet("{questionId}")]
+    public ActionResult<QuestionAnswerDTO> GetQuestionAnswersByQuestionId(int questionId)
+    {
+        QuestionAnswerDTO questionAnswer = _questionService.GetQuestionAnswersByQuestionId(questionId);
+        return Ok(questionAnswer);
+    }
+    
+    [HttpDelete("{id}")]
+    public ActionResult<string> Delete(int id)
+    {
+        return _questionService.Delete(id);
+    }
 
-    // [HttpPost]
-    // public IActionResult AddQuestionWithAnswers([FromBody] AddQuestionDTO question)
-    // {
-    //     var ok = _questionService.AddQuestionWithAnswers(question);
-    //     return Ok(ok);
-    // }
 }

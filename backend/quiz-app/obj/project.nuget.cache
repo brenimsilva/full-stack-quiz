@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cA7CEvQzt4x5kI/+OdNjcRnIoL0RAlfySBRLsIaO2lOI3RSbwCM8bq7GieKuuFFkvsQCF3+4z/DqHjFGdlQaTw==",
+  "dgSpecHash": "e+vR07C3UXt7z8g079KaunZA2pC53XhNgIigkdgVx1Qtn4jvyrEGX1vHrhRmXNsPRGFUJio0r4gf002qOBlLRA==",
   "success": true,
-  "projectFilePath": "c:\\projects\\quiz\\backend\\quiz-app\\quiz-app.csproj",
+  "projectFilePath": "C:\\projects\\full-stack-quiz\\backend\\quiz-app\\quiz-app.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\breno\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\breno\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
